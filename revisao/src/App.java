@@ -14,7 +14,7 @@ public class App {
 
         var umaCidade = new Cidade("Joinville");
         umCliente.setCidade(umaCidade);
-        //System.out.println(umCliente.getCidade());
+        System.out.println(umCliente.getCidade().getNome());
 
         //System.out.println(umCliente.toString());
 

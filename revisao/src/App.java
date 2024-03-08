@@ -1,7 +1,22 @@
+import entidades.Cidade;
+import entidades.Cliente;
+
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        // System.out.println("Hello, World!");
 
-        //Cliente c1 = new Cliente("Pedrinho");
+        Cliente umCliente;
+        umCliente = new Cliente("Ana");
+
+        //System.out.println(umCliente);
+        //System.out.println(umCliente.getNome());
+        
+
+        var umaCidade = new Cidade("Joinville");
+        umCliente.setCidade(umaCidade);
+        //System.out.println(umCliente.getCidade());
+
+        //System.out.println(umCliente.toString());
+
     }
 }

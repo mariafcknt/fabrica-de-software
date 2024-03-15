@@ -5,47 +5,28 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.event.MouseInputListener;
 
-public class TelaPrincipal extends JFrame 
-                implements MouseInputListener{
+import controladores.TelaPrincipalControlador;
+
+public class TelaPrincipal extends JFrame{
+    private TelaPrincipalControlador controlador = new TelaPrincipalControlador();
 
     public TelaPrincipal() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
         JButton meuBotao = new JButton("ME CLICA");
-        //fala que eu te escuto!!!!
-        meuBotao.addMouseListener(this);
+        meuBotao.addActionListener(controlador);
+        meuBotao.setName("meuBotao");
         getContentPane().add(meuBotao);
+
+        JButton meuBotao2 = new JButton("ME CLICA TAMBEM");
+        meuBotao2.setName("meuBotao2");
+        meuBotao2.addActionListener(controlador);
+        getContentPane().add(meuBotao2, "South");
 
         setSize(400,400);
         setVisible(true);
     }
     public static void main(String[] args) {
         new TelaPrincipal();
-    }
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
-        JOptionPane.showMessageDialog(null, "EU NAO ACREDITO");
-    }
-    @Override
-    public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-    }
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
-    @Override
-    public void mouseEntered(MouseEvent e) {
-    }
-    @Override
-    public void mouseExited(MouseEvent e) {
-    }
-    @Override
-    public void mouseDragged(MouseEvent e) {
-    }
-    @Override
-    public void mouseMoved(MouseEvent e) {
     }
 }

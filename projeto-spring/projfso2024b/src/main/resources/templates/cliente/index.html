@@ -13,9 +13,12 @@
                 <th>Data Nascimento</th>
             </thead>
             <tbody>
-                <td>Zezinho</td>
-                <td>Rua lalalalal 100</td>
-                <td>18/04/2024</td>
+                <!-- -->
+                <tr th:each="umCliente : ${listaClientes}">
+                  <td th:text="${umCliente.nome}"></td>
+                <td th:text="${umCliente.endereco}"></td>
+                <td th:text="${umCliente.dataNascimento}"></td>  
+                </tr>
             </tbody>
         </table>
         <div th:include="layout :: footer">(footer)</div>

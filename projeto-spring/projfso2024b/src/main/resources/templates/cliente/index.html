@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+    <head th:include="layout :: htmlhead"></head>
+    <body>
+        
+        <nav th:replace="layout :: menu">(menu)</nav>
+
+        <h1>Clientes</h1>
+        <table class="table">
+            <thead>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Data Nascimento</th>
+            </thead>
+            <tbody>
+                <td>Zezinho</td>
+                <td>Rua lalalalal 100</td>
+                <td>18/04/2024</td>
+            </tbody>
+        </table>
+        <div th:include="layout :: footer">(footer)</div>
+    </body>
+</html>

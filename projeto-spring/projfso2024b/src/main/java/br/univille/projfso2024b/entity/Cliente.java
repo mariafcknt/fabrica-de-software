@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Cliente {
@@ -16,7 +17,7 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id; //chave artificial
     @Column(length = 1000, nullable = false)
-    //@NotBlank(message = "Campo não pode ser branco")    
+    @NotBlank(message = "Campo não pode ser branco")    
     private String nome;
     @Column(length = 1000)
     private String endereco;

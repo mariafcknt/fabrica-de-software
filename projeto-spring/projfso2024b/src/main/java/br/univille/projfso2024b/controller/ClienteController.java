@@ -12,6 +12,7 @@ import br.univille.projfso2024b.service.ClienteService;
 import ch.qos.logback.core.model.Model;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -48,5 +49,11 @@ public class ClienteController {
 
     //esta dando erro para salvar, o que pode ser?  //o erro é que o form não ta mandando o cliente, ele ta mandando um objeto com o cliente dentro
 
+    @GetMapping("/alterar/{id}") //aqui temos uma url dinamica, vai estar composta pela url base + /alterar + /id
+    public ModelAndView alterar(@PathVariable("id") long id){
+        // o ("id") nao é obrigatorio
+        var cliente = service.getById(id); //aqui eu pego o cliente pelo id
+        return new ModelAndView("cliente/form", "cliente", cliente); //aqui eu mando o cliente para o form
+    }
 
 }

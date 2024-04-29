@@ -15,19 +15,22 @@
                     <th>Nome</th>
                     <th>Endereço</th>
                     <th>Data Nascimento</th>
+                    <th></th>
                 </thead>
                 <tbody>
-                    <!-- -->
+                    <!--th:each é uma for, cada cliente q vem do banco ele repete tudo abaixo -->
                     <tr th:each="umCliente : ${listaClientes}">
                     <td th:text="${umCliente.nome}"></td>
                     <td th:text="${umCliente.endereco}"></td>
                     <td th:text="${umCliente.dataNascimento}"></td>  
+                    <!-- @ no timeleaf é uam string-->
+                    <td><a th:href="@{'/clientes/alterar/' + ${umCliente.id}}" class="btn btn-warning">Editar</a></td>
                     </tr>
                 </tbody>
             </table>
 
         </main>
-        
+
         <div th:include="layout :: footer">(footer)</div>
     </body>
 </html>

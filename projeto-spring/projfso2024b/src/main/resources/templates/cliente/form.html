@@ -9,8 +9,10 @@
             
             <h1>Cliente</h1>
 
-            <form th:action="@{/clientes}" method="post" th:object="${cliente}"> <!-- timeleaf o back end java irá mandar....-->
-                
+            <form th:action="@{/clientes}" 
+            method="post" 
+            th:object="${cliente}"> <!-- timeleaf o back end java irá mandar....-->
+                <input type="hidden" th:field="*{id}"> <!-- name e substituido por field, e dps field é trocado por nome-->
                 <div class="formgroup">
                     <label for="txtnome">Nome</label>
                     <input type="text" id="txtnome" th:field="*{nome}" class="form-control"> <!-- ou cliente.nome, esse ~e o nome completo, mas como estou no escopo da tag nome, posso 'esconder'-->

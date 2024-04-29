@@ -8,5 +8,5 @@ public interface ClienteService {
     void save(Cliente cliente);
     Cliente getById(long id);
     List<Cliente> getAll();
-    //teste
+    Cliente delete(long id);
 }

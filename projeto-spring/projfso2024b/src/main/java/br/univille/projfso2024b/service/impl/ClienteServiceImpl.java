@@ -38,4 +38,11 @@ public class ClienteServiceImpl
         //n fazemos isso em aplicacao real, temos que usar paginacao, mostrar 10, 20, etc
         //
     }
+
+    @Override
+    public Cliente delete(long id) {
+        var cliente = getById(id); //guardamos o que vai ser excluido para dar um retorno
+        repository.deleteById(id);
+        return cliente;
+    }
 }

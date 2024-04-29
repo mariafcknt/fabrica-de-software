@@ -10,6 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.univille.projfso2024b.entity.Cliente;
 import br.univille.projfso2024b.service.ClienteService;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping("/clientes")
@@ -41,5 +43,12 @@ public class ClienteController {
     public ModelAndView alterar(@PathVariable("id") long id){
         var cliente = service.getById(id);
         return new ModelAndView("cliente/form", "cliente", cliente);
+    }
+
+
+    @GetMapping("/delete/{id}")
+    public ModelAndView delete(@PathVariable("id") long id){
+        service.delete(id);
+        return new ModelAndView("redirect:/clientes");
     }
 }

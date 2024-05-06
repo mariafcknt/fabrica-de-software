@@ -16,6 +16,7 @@ public class Startup {
     @Autowired
     private ClienteService service;
     
+    /*
     @EventListener
     public void onApplicationEvent(ContextRefreshedEvent event){
         var cliente1 = new Cliente();
@@ -23,5 +24,5 @@ public class Startup {
         cliente1.setEndereco("Rua laaaaaa");
         cliente1.setDataNascimento(new Date());
         service.save(cliente1);
-    }
+    }*/
 }

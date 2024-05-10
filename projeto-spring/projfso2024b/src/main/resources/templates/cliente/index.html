@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
     <head th:include="layout :: htmlhead"></head>
     <body>
-        
         <main class="container">
             <nav th:replace="layout :: menu">(menu)</nav>
-
             <h1>Clientes</h1>
-
-            <a href="/clientes/novo" class="btn btn-primary">Novo Cliente</a>
+            
+            <a href="/clientes/novo" class="btn btn-primary">Novo</a>
 
             <table class="table" id="tabclientes">
                 <thead>
@@ -18,18 +16,16 @@
                     <th></th>
                 </thead>
                 <tbody>
-                    <!--th:each é uma for, cada cliente q vem do banco ele repete tudo abaixo -->
                     <tr th:each="umCliente : ${listaClientes}">
-                    <td th:text="${umCliente.nome}"></td>
-                    <td th:text="${umCliente.endereco}"></td>
-                    <td th:text="${umCliente.dataNascimento}"></td>  
-                    <!-- @ no timeleaf é uam string-->
-                    <td><a th:href="@{'/clientes/alterar/' + ${umCliente.id}}" class="btn btn-warning">Editar</a>
-                    
-                    <button class="btn btn-danger js-delete" th:data-id="${umCliente.id}">Excluir</button>
-                    </td>
-                    <!-- js-delete invenção do walter para simplificar-->
-                    
+                        <td th:text="${umCliente.nome}"></td>
+                        <td th:text="${umCliente.endereco}"></td>
+                        <td th:text="${umCliente.dataNascimento}"></td>
+                        <td><a th:href="@{'/clientes/alterar/' + ${umCliente.id}}" 
+                            class="btn btn-warning">Alterar</a>
+                            <button class="btn btn-danger js-delete"
+                                th:data-id="${umCliente.id}">Excluir</button>
+                        
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -38,7 +34,7 @@
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title">Excluir</h5>
+                      <h5 class="modal-title">Excluir Cliente</h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -53,8 +49,9 @@
               </div>
 
         </main>
-
         <div th:include="layout :: footer">(footer)</div>
-        <script th:src="@{/script.js}"></script>
+        <script th:src="@{/script.js}">   
+
+        </script>
     </body>
 </html>

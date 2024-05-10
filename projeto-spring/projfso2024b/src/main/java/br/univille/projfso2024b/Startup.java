@@ -10,17 +10,28 @@ import org.springframework.stereotype.Component;
 import br.univille.projfso2024b.entity.Cliente;
 import br.univille.projfso2024b.service.ClienteService;
 
+import br.univille.projfso2024b.entity.Pet;
+import br.univille.projfso2024b.service.PetService;
+
 @Component
 public class Startup {
     @Autowired
-    private ClienteService service;
+    private ClienteService clienteService;
+    @Autowired
+    private PetService petService;
 
     @EventListener
-    public void onApplicationEvent(ContextRefreshedEvent event){
+    public void onApplicationEvent(ContextRefreshedEvent event) {
         var cliente1 = new Cliente();
         cliente1.setNome("Zezinho da Silva Sauro");
         cliente1.setEndereco("Rua lalalla 1000");
         cliente1.setDataNascimento(new Date());
-        service.save(cliente1);
-    } 
+        clienteService.save(cliente1);
+
+        var pet1 = new Pet();
+        pet1.setNome("Doguin");
+        pet1.setRaca("Vira-lata");
+        pet1.setEspecie("Cachorro");
+        petService.save(pet1);
+    }
 }

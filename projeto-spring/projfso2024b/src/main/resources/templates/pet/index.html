@@ -8,9 +8,9 @@
 
             <h1>Pet</h1>
 
-            <a href="/pet/novo" class="btn btn-primary">Novo Pet</a>
+            <a href="/pets/novo" class="btn btn-primary">Novo Pet</a>
 
-            <table class="table" id="tabpet">
+            <table class="table" id="tabpets">
                 <thead>
                     <th>Nome</th>
                     <th>Idade</th>
@@ -25,7 +25,7 @@
                     <td th:text="${umPet.idade}"></td>
                     <td th:text="${umPet.especie}"></td> 
                     <td th:text="${umPet.raca}"></td>
-                    <td><a th:href="@{'/pet/alterar/' + ${umPet.id}}" class="btn btn-warning">Editar</a>
+                    <td><a th:href="@{'/pets/alterar/' + ${umPet.id}}" class="btn btn-warning">Editar</a>
                     
                     <button class="btn btn-danger js-delete" th:data-id="${umPet.id}">Excluir</button>
                     </td>

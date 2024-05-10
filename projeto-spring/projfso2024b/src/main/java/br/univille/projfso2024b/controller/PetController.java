@@ -40,7 +40,7 @@ public class PetController {
     @PostMapping()
     public ModelAndView salvar(Pet pet){
         service.save(pet); //aqui eu salvo
-        return new ModelAndView("redirect:/clientes"); //aqui eu mando pra tela clientes
+        return new ModelAndView("redirect:/pets"); //aqui eu mando pra tela clientes
     }
 
     //esta dando erro para salvar, o que pode ser?  //o erro é que o form não ta mandando o cliente, ele ta mandando um objeto com o cliente dentro

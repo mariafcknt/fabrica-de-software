@@ -13,14 +13,22 @@ public class Pet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @Column(length = 1000, nullable = false)
     @NotBlank(message = "Campo nome não pode ser em branco")
     private String nome; 
+
     @Column(length = 1000)
-    private String raca;
+    private String especie;
+
+    @Column(length = 1000)
+    private long idade;
+
+
     @Column(length = 1000, nullable = false)
     @NotBlank(message = "Campo raça não pode ser em branco")
-    private String especie;
+    private String raca;
+
     @ManyToOne
     private Cliente cliente;
 
@@ -53,5 +61,11 @@ public class Pet {
     }
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+    public long getIdade() {
+        return idade;
+    }
+    public void setIdade(long idade) {
+        this.idade = idade;
     }
 }

@@ -29,8 +29,9 @@ public class Pet {
     @NotBlank(message = "Campo raça não pode ser em branco")
     private String raca;
 
-    @ManyToOne
-    private Cliente cliente;
+    
+    //@ManyToOne
+    //private Cliente cliente;
 
     public long getId() {
         return id;
@@ -56,12 +57,12 @@ public class Pet {
     public void setEspecie(String especie) {
         this.especie = especie;
     }
-    public Cliente getCliente() {
-        return cliente;
-    }
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
+ //   public Cliente getCliente() {
+  //      return cliente;
+  //  }
+  //  public void setCliente(Cliente cliente) {
+  //      this.cliente = cliente;
+ //   }
     public long getIdade() {
         return idade;
     }

@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,9 +29,16 @@ public class Pet {
     private String especie;
     @Column(length = 1000)
     private String raca;
-    //@ManyToOne
-    //private Cliente cliente;
 
+    @ManyToOne(cascade = CascadeType.ALL) //ALL = Se apaga o cliente, apagaga o Pet. Para isso não acontecer fazemos cascade = {CascadeType.MERGE, CascadeType.REFRESH} refresh(quando busca o cliente, busca a cidade, para trazer o dado mais atual)
+    private Cliente cliente;
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
     public long getId() {
         return id;
     }

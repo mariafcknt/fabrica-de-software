@@ -33,6 +33,16 @@
                     <input type="text" id="txtraca" th:field="*{raca}" class="form-control"> <!-- raca ter que ser exatamente como está na minha entidade-->
                 </div>
 
+                <div class="form-group">
+                    <label for="txtcliente">Cliente</label>
+                    <select class="form-select" th:field="*{cliente}" id="txtcliente">
+                        <option th:each="umCliente : ${listaClientes}"
+                                th:text="${umCliente.nome}"
+                                th:value="${umCliente.id}"
+                        ></option>
+                    </select>
+                </div>
+
 
                 <div class="form-group">
                     <button class="btn btn-primary" type="submit">Enviar</button>

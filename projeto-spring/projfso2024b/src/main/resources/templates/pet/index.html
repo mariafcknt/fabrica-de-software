@@ -16,6 +16,7 @@
                     <th>Idade</th>
                     <th>Especie</th>
                     <th>Raça</th>
+                    <th>Cliente</th>
                     <th></th>
                 </thead>
                 <tbody>
@@ -25,6 +26,7 @@
                     <td th:text="${umPet.idade}"></td>
                     <td th:text="${umPet.especie}"></td> 
                     <td th:text="${umPet.raca}"></td>
+                    <td th:text="${umPet.cliente?.nome}"></td> <!-- cliente? essa coisa aqui deixa criar pet sem cliente, o que no nosso sistema nao pode, mas caguei.-->
                     <td><a th:href="@{'/pets/alterar/' + ${umPet.id}}" class="btn btn-warning">Editar</a>
                     
                     <button class="btn btn-danger js-delete" th:data-id="${umPet.id}">Excluir</button>

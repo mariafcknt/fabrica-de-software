@@ -1,6 +1,7 @@
 package br.univille.projfso2024b.entity;
 
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,14 +25,12 @@ public class Pet {
     @Column(length = 1000)
     private long idade;
 
-
     @Column(length = 1000, nullable = false)
     @NotBlank(message = "Campo raça não pode ser em branco")
     private String raca;
 
-    
-    //@ManyToOne
-    //private Cliente cliente;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Cliente cliente;
 
     public long getId() {
         return id;
@@ -57,12 +56,12 @@ public class Pet {
     public void setEspecie(String especie) {
         this.especie = especie;
     }
- //   public Cliente getCliente() {
-  //      return cliente;
-  //  }
-  //  public void setCliente(Cliente cliente) {
-  //      this.cliente = cliente;
- //   }
+    public Cliente getCliente() {
+        return cliente;
+    }
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
     public long getIdade() {
         return idade;
     }

@@ -1,5 +1,7 @@
 package br.univille.projfso2024b.controller;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.univille.projfso2024b.entity.Pet;
+import br.univille.projfso2024b.service.ClienteService;
 import br.univille.projfso2024b.service.PetService;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -19,12 +22,20 @@ public class PetController {
 
     @Autowired
     private PetService service;
+
+    @Autowired
+    private ClienteService serviceCliente;
     
     @GetMapping
     public ModelAndView index() {
-        var listaPets = service.getAll();
+        var pets = service.getAll();
+        var listaClientes = serviceCliente.getAll();
+        HashMap<String, Object> dados = new HashMap<>();
+
+        dados.put("listaClientes", listaClientes);
+        dados.put("pets", pets);
         //html, referência/apelido do dado no html, dado
-        return new ModelAndView("pet/index", "listaPets", listaPets);
+        return new ModelAndView("pet/index", dados);
     }
 
     @GetMapping("/novo")

@@ -22,6 +22,7 @@
                         <td th:text="${umCliente.dataNascimento}"></td>
                         <td><a th:href="@{'/clientes/alterar/' + ${umCliente.id}}" 
                             class="btn btn-warning">Alterar</a>
+                            
                             <button class="btn btn-danger js-delete"
                                 th:data-id="${umCliente.id}">Excluir</button>
                         

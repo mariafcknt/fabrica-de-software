@@ -28,12 +28,12 @@ public class PetController {
     
     @GetMapping
     public ModelAndView index() {
-        var pets = service.getAll();
-        var listaClientes = serviceCliente.getAll();
+      // var pets = service.getAll();
+        var listaPets= service.getAll();
         HashMap<String, Object> dados = new HashMap<>();
 
-        dados.put("listaClientes", listaClientes);
-        dados.put("pets", pets);
+        dados.put("listaPets", listaPets);
+       // dados.put("pets", pets);
         //html, referência/apelido do dado no html, dado
         return new ModelAndView("pet/index", dados);
     }
@@ -41,7 +41,11 @@ public class PetController {
     @GetMapping("/novo")
     public ModelAndView novo(){
         var pet = new Pet();
-        return new ModelAndView("pet/form","pet", pet);
+        var listaClientes = serviceCliente.getAll();
+        HashMap<String, Object> dados = new HashMap<>();
+        dados.put("pet", pet);
+        dados.put("listaClientes", listaClientes);
+        return new ModelAndView("pet/form", dados);
     }
 
     @PostMapping()
@@ -53,7 +57,11 @@ public class PetController {
     @GetMapping("/alterar/{id}")
     public ModelAndView alterar(@PathVariable("id") long id){
         var pet = service.getById(id);
-        return new ModelAndView("pet/form", "pet", pet);
+        var listaClientes = serviceCliente.getAll();
+        HashMap<String,Object> dados = new HashMap<>();
+        dados.put("pet", pet);
+        dados.put("listaClientes",listaClientes);
+        return new ModelAndView("pet/form", dados);
     }
 
 

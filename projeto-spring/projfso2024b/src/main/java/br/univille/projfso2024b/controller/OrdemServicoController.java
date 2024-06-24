@@ -21,11 +21,12 @@ import br.univille.projfso2024b.service.PetService;
 @RequestMapping("/ordens")
 public class OrdemServicoController {
     @Autowired
-    private OrdemServico service;
+    private OrdemServicoService service;
 
     @Autowired
     private PetService servicePet;
 
+    @GetMapping()
     public ModelAndView index() {
         var listaOrdens = service.getAll();
 
@@ -47,15 +48,15 @@ public class OrdemServicoController {
         var ordem = service.getById(id);
         var listaPets = servicePet.getAll();
         HashMap<String,Object> dados = new HashMap<>();
-        dados.put("pet", pet);
-        dados.put("listaPets",listaOrdens);
+        dados.put("ordem", ordem);
+        dados.put("listaPets",listaPets);
         return new ModelAndView("ordens/form", dados);
     }
 
     @GetMapping("/delete/{id}")
     public ModelAndView delete(@PathVariable("id") long id){
         service.delete(id);
-        return new ModelAndView("redirect:/ordens);
+        return new ModelAndView("redirect:/ordens");
     }
 
 }

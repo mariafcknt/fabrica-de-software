@@ -8,48 +8,18 @@
 
             <form th:action="@{/ordens}"
                 method="POST"
-                th:object="${ordens}">
+                th:object="${ordem}">
 
                 <input type="hidden" th:field="*{id}">
 
                 <div class="form-group">
-                    <label for="txtnome">Nome</label>
+                    <label for="txtservico">Serviço</label>
                 <input type="text"
-                    id="txtnome"
-                    th:field="*{nome}"
+                    id="txtservico"
+                    th:field="*{servico}"
                     class="form-control">
                 </div>
-
-                <div class="form-group">
-                    <label for="txtraca">Raça</label>
-                <input type="text"
-                    id="txtraca"
-                    th:field="*{raca}"
-                    class="form-control">
-                </div>
-
-                <div class="formgroup">
-                    <label for="txtidade">Idade</label>
-                    <input type="text" id="txtidade" th:field="*{idade}" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label for="txtespecie">Espécie</label>
-                <input type="text"
-                    id="txtespecie"
-                    th:field="*{especie}"
-                    class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label for="txtcliente">Cliente</label>
-                    <select class="form-select" th:field="*{cliente}" id="txtcliente">
-                        <option th:each="umCliente : ${listaClientes}"
-                                th:text="${umCliente.nome}"
-                                th:value="${umCliente.id}"
-                        ></option>
-                    </select>
-                </div>
+                
 
                 <div class="form-group">
                     <button class="btn btn-primary" type="submit">Enviar</button>

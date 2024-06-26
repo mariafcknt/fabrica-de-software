@@ -12,22 +12,22 @@
 
             <table class="table" id="tabpets">
                 <thead>
-                    <th>Nome</th>
-                    <th>Idade</th>
-                    <th>Espécie</th>
-                    <th>Raça</th>
-                    <th>Tutor</th>
-                    <th></th>
+                    <th>Ordem</th>
+                    <th>Data de Entrada</th>
+                    <th>Serviço</th>
+                    <th>Valor</th>
+                    <th>Forma de Pagamento</th>
+                  
                 </thead>
                 <tbody>
                     <!--th:each é uma for, cada cliente q vem do banco ele repete tudo abaixo -->
-                    <tr th:each="umPet : ${listaPets}">
-                    <td th:text="${umPet.nome}"></td>
-                    <td th:text="${umPet.idade}"></td>
-                    <td th:text="${umPet.especie}"></td> 
-                    <td th:text="${umPet.raca}"></td>
-                    <td th:text="${umPet.cliente?.nome}"></td> 
-                    <td><a th:href="@{'/pets/alterar/' + ${umPet.id}}" class="btn btn-warning">Editar</a>
+                    <tr th:each="umaOrdem : ${listaOrdens}">
+                    <td th:text="${umaOrdem.nome}"></td>
+                    <td th:text="${umaOrdem.idade}"></td>
+                    <td th:text="${umaOrdem.especie}"></td> 
+                    <td th:text="${umaOrdem.raca}"></td>
+                    <td th:text="${umaOrdem.cliente?.nome}"></td> 
+                    <td><a th:href="@{'/pets/alterar/' + ${umaOrdem.id}}" class="btn btn-warning">Editar</a>
                     
                     <button class="btn btn-danger js-delete" th:data-id="${umPet.id}">Excluir</button>
                     </td>
@@ -45,7 +45,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <p>Confirma a exclusão do pet?</p>
+                    <p>Confirma a exclusão da Ordem?</p>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>

@@ -46,8 +46,10 @@ public class OrdemServicoController {
 
     @GetMapping("/novo")
     public ModelAndView novo(){
-        var ordens = new OrdemServico();
-        return new ModelAndView("ordens/form","ordens", ordens);
+        var ordem = new OrdemServico();
+        HashMap<String, Object> dados = new HashMap<>();
+        dados.put("ordem", ordem);
+        return new ModelAndView("ordens/form",dados);
     }
 
     @GetMapping("/alterar/{id}")

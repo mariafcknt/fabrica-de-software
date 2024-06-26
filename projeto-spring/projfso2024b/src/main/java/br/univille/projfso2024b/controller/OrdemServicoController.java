@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.univille.projfso2024b.entity.Cliente;
 import br.univille.projfso2024b.entity.OrdemServico;
 import br.univille.projfso2024b.service.OrdemServicoService;
 
@@ -34,13 +35,19 @@ public class OrdemServicoController {
 
         dados.put("listaOrdens", listaOrdens);
 
-        return new ModelAndView("ordens/form", dados);
+        return new ModelAndView("ordens/index", dados);
     }
 
     @PostMapping()
     public ModelAndView save(OrdemServico ordem){
         service.save(ordem);
         return new ModelAndView("redirect:/ordens");
+    }
+
+    @GetMapping("/novo")
+    public ModelAndView novo(){
+        var ordens = new OrdemServico();
+        return new ModelAndView("ordens/form","ordens", ordens);
     }
 
     @GetMapping("/alterar/{id}")

@@ -14,22 +14,26 @@
                 <thead>
                     <th>Ordem</th>
                     <th>Data de Entrada</th>
+                    <th>Data de Saída</th>
                     <th>Serviço</th>
                     <th>Valor</th>
                     <th>Forma de Pagamento</th>
+                    <th>Pet</th>
                   
                 </thead>
                 <tbody>
                     <!--th:each é uma for, cada cliente q vem do banco ele repete tudo abaixo -->
                     <tr th:each="umaOrdem : ${listaOrdens}">
-                    <td th:text="${umaOrdem.nome}"></td>
-                    <td th:text="${umaOrdem.idade}"></td>
-                    <td th:text="${umaOrdem.especie}"></td> 
-                    <td th:text="${umaOrdem.raca}"></td>
-                    <td th:text="${umaOrdem.cliente?.nome}"></td> 
-                    <td><a th:href="@{'/pets/alterar/' + ${umaOrdem.id}}" class="btn btn-warning">Editar</a>
+                    <td th:text="${umaOrdem.id}"></td>
+                    <td th:text="${umaOrdem.dataEntrada}"></td>
+                    <td th:text="${umaOrdem.dataSaida}"></td> 
+                    <td th:text="${umaOrdem.servico}"></td>
+                    <td th:text="${umaOrdem.valor}"></td>
+                    <td th:text="${umaOrdem.formaPagamento}"></td>
+                    <td th:text="${umaOrdem.pet?.nome}"></td> 
+                    <td><a th:href="@{'/ordens/alterar/' + ${umaOrdem.id}}" class="btn btn-warning">Editar</a>
                     
-                    <button class="btn btn-danger js-delete" th:data-id="${umPet.id}">Excluir</button>
+                    <button class="btn btn-danger js-delete" th:data-id="${umaOrdem.id}">Excluir</button>
                     </td>
                     <!-- js-delete invenção do walter para simplificar-->
                     

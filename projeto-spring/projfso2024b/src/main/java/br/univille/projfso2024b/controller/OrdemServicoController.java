@@ -47,8 +47,10 @@ public class OrdemServicoController {
     @GetMapping("/novo")
     public ModelAndView novo(){
         var ordem = new OrdemServico();
+        var listaPets = servicePet.getAll();
         HashMap<String, Object> dados = new HashMap<>();
         dados.put("ordem", ordem);
+        dados.put("listaPets", listaPets);
         return new ModelAndView("ordens/form",dados);
     }
 

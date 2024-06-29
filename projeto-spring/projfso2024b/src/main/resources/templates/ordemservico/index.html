@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+    <head th:include="layout :: htmlhead"></head>
+    <body>
+        
+        <main class="container">
+            <nav th:replace="layout :: menu">(menu)</nav>
+
+            <h1>Ordens de Serviço</h1>
+
+            <a href="/ordens/novo" class="btn btn-primary">Nova Ordem</a>
+
+            <table class="table" id="tabordens">
+                <thead>
+                    <th>Pet</th>
+                    <th>Data de Entrada</th>
+                    <th>Serviço</th>
+                    <th>Anotação</th>
+                    <th>Forma de Pagamento</th>
+                    <th>Preço</th>
+                    <th>Data de Saída</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <!--th:each é uma for, cada cliente q vem do banco ele repete tudo abaixo -->
+                    <tr th:each="umaOrdemServico : ${listaOrdens}">
+                    <td th:text="${umaOrdemServico.pet}"></td>
+                    <td th:text="${umaOrdemServico.dataEntrada}"></td>
+                    <td th:text="${umaOrdemServico.servico}"></td>
+                    <td th:text="${umaOrdemServico.anotacao}"></td> 
+                    <td th:text="${umaOrdemServico.formaPagamento}"></td>
+                    <td th:text="${umaOrdemServico.preco}"></td>
+                    <td th:text="${umaOrdemServico.dataSaida}"></td>
+                    <td><a th:href="@{'/ordens/alterar/' + ${umaOrdemServico.id}}" class="btn btn-warning">Editar</a>
+                    
+                    <button class="btn btn-danger js-delete" th:data-id="${umaOrdemServico.id}">Excluir</button>
+                    </td>
+                    <!-- js-delete invenção do walter para simplificar-->
+                    
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="modal" tabindex="-1" id="modalordem">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Excluir</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Confirma a exclusão da ordem?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                      <button type="button" class="btn btn-primary" id="btnsim">Sim</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+        </main>
+
+        <div th:include="layout :: footer">(footer)</div>
+        <script th:src="@{/script.js}"></script>
+    </body>
+</html>

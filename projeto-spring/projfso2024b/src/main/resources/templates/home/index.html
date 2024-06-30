@@ -5,7 +5,60 @@
         
         <nav th:replace="layout :: menu">(menu)</nav>
 
-        <h1>qq coisa</h1>
+        <div class="container">
+            
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card h-100">
+                      <img src="/imagens/clientes.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Cadastrar Cliente</h5>
+                        <p class="card-text">Tela de cadastro de clientes</p>
+                        <a class="btn btn-primary" href="/clientes" role="button">Cadastrar</a>
+                      </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100">
+                      <img src="/imagens/pets.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Cadastrar Pet</h5>
+                        <p class="card-text">Tela de cadastro de pets</p>
+                        <a class="btn btn-primary" href="/pets" role="button">Cadastrar</a>
+                      </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card h-100">
+                        <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                <img src="/imagens/banho.jpg" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="/imagens/tosa.jpg" class="d-block w-100" alt="...">
+                              </div>
+                              <div class="carousel-item">
+                                <img src="/imagens/tosa2.jpg" class="d-block w-100" alt="...">
+                              </div>
+                            </div>
+                          </div>
+                      <div class="card-body">
+                        <h5 class="card-title">Ordem</h5>
+                        <!-- <p class="card-text">O banho é essencial para a saúde e higiene de cachorros e gatos, removendo sujeiras e pelos soltos.</p>-->
+                        <p class="card-text">Tela de cadastro de ordem</p>
+                        <a class="btn btn-primary" href="/ordens/novo" role="button">Cadastrar</a>
+                      </div>
+                    </div>
+                  </div>
+
+
+              </div>
+        </div>
+
         <div th:include="layout :: footer">(footer)</div>
     </body>
 </html>

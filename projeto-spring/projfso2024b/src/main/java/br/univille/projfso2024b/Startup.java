@@ -35,6 +35,7 @@ public class Startup {
         pet1.setNome("Doguin");
         pet1.setRaca("Vira-lata");
         pet1.setEspecie("Cachorro");
+        pet1.setIdade(1);
         petService.save(pet1);
 
         var ordem1 = new OrdemServico();

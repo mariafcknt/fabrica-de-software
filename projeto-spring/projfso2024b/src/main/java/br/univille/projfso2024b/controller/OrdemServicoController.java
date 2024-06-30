@@ -1,21 +1,19 @@
 package br.univille.projfso2024b.controller;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.univille.projfso2024b.entity.Cliente;
 import br.univille.projfso2024b.entity.OrdemServico;
 import br.univille.projfso2024b.service.OrdemServicoService;
-
 import br.univille.projfso2024b.service.PetService;
 
 @Controller
@@ -27,47 +25,48 @@ public class OrdemServicoController {
     @Autowired
     private PetService servicePet;
 
+    @ModelAttribute("formasPagamento")
+    public List<String> formasPagamento() {
+        return List.of("Pix", "Crédito", "Débito", "Boleto", "Dinheiro"); // Exemplo de formas de pagamento
+    }
+
     @GetMapping()
     public ModelAndView index() {
         var listaOrdens = service.getAll();
-
         HashMap<String, Object> dados = new HashMap<>();
-
         dados.put("listaOrdens", listaOrdens);
-
         return new ModelAndView("ordens/index", dados);
     }
 
     @PostMapping()
-    public ModelAndView save(OrdemServico ordem){
+    public ModelAndView save(OrdemServico ordem) {
         service.save(ordem);
         return new ModelAndView("redirect:/ordens");
     }
 
     @GetMapping("/novo")
-    public ModelAndView novo(){
+    public ModelAndView novo() {
         var ordem = new OrdemServico();
         var listaPets = servicePet.getAll();
         HashMap<String, Object> dados = new HashMap<>();
         dados.put("ordem", ordem);
         dados.put("listaPets", listaPets);
-        return new ModelAndView("ordens/form",dados);
+        return new ModelAndView("ordens/form", dados);
     }
 
     @GetMapping("/alterar/{id}")
-    public ModelAndView alterar(@PathVariable("id") long id){
+    public ModelAndView alterar(@PathVariable("id") long id) {
         var ordem = service.getById(id);
         var listaPets = servicePet.getAll();
-        HashMap<String,Object> dados = new HashMap<>();
+        HashMap<String, Object> dados = new HashMap<>();
         dados.put("ordem", ordem);
-        dados.put("listaPets",listaPets);
+        dados.put("listaPets", listaPets);
         return new ModelAndView("ordens/form", dados);
     }
 
     @GetMapping("/delete/{id}")
-    public ModelAndView delete(@PathVariable("id") long id){
+    public ModelAndView delete(@PathVariable("id") long id) {
         service.delete(id);
         return new ModelAndView("redirect:/ordens");
     }
-
 }

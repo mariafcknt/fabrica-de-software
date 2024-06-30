@@ -1,81 +1,58 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
-    <head th:include="layout :: htmlhead"></head>
-    <body>
-        <main class="container">
-            <nav th:replace="layout :: menu">(menu)</nav>
-            <h1>Ordens de Serviço</h1>
+<head th:include="layout :: htmlhead"></head>
+<body>
+    <main class="container">
+        <nav th:replace="layout :: menu">(menu)</nav>
+        <h1>Ordens de Serviço</h1>
 
-            <form th:action="@{/ordens}"
-                method="POST"
-                th:object="${ordem}">
+        <form th:action="@{/ordens}" method="POST" th:object="${ordem}">
+            <input type="hidden" th:field="*{id}">
 
-                <input type="hidden" th:field="*{id}">
+            <div class="form-group">
+                <label for="txtservico">Serviço</label>
+                <input type="text" id="txtservico" th:field="*{servico}" class="form-control">
+            </div>
 
-                <div class="form-group">
-                    <label for="txtservico">Serviço</label>
-                <input type="text"
-                    id="txtservico"
-                    th:field="*{servico}"
-                    class="form-control">
-                </div>
+            <div class="form-group">
+                <label for="txtanotacao">Anotação</label>
+                <input type="text" id="txtanotacao" th:field="*{anotacao}" class="form-control">
+            </div>
 
-                <div class="form-group">
-                    <label for="txtanotacao">Anotação</label>
-                <input type="text"
-                    id="txtanotacao"
-                    th:field="*{anotacao}"
-                    class="form-control">
-                </div>
-
-                <div class="form-group">
+            <div class="form-group">
                 <label for="txtformapagamento">Forma de Pagamento</label>
-                    <select class="form-select" th:field="*{formaPagamento}" id="txtformapagamento">
-                        <option >Pix</option>
-                        <option>Cartão de Crédito</option>
-                        <option>Cartão de Débito</option>
-                        <option>Boleto</option>
-                    </select>    
-                </div>
+                <select class="form-select" th:field="*{formaPagamento}" id="txtformapagamento">
+                    <option th:each="forma : ${formasPagamento}" th:value="${forma}" th:text="${forma}"></option>
+                </select>
+            </div>
 
-                <div class="form-group">
-                    <label for="txtpet">Pet</label>
-                    <select class="form-select" th:field="*{pet}" id="txtpet">
-                        <option th:each="umPet : ${listaPets}"
-                                th:text="${umPet.nome}"
-                                th:value="${umPet.id}"
-                        ></option>
-                    </select>
-                </div>
+            <div class="form-group">
+                <label for="txtpet">Pet</label>
+                <select class="form-select" th:field="*{pet}" id="txtpet">
+                    <option th:each="umPet : ${listaPets}" th:text="${umPet.nome}" th:value="${umPet.id}"></option>
+                </select>
+            </div>
 
-                <div class="form-group">
-                    <label for="txtdatasaida">Data de Saída
-                    </label>
-                <input type="date"
-                    id="txtdatasaida"
-                    th:field="*{dataSaida}"
-                    class="form-control">
-                </div>
+            <div class="form-group">
+                <label for="txtdatasaida">Data de Saída</label>
+                <input type="date" id="txtdatasaida" th:field="*{dataSaida}" class="form-control">
+            </div>
 
-                <div class="form-group">
-                    <label for="txtdataentrada">Data entrada
-                    </label>
-                <input type="date"
-                    id="txtdataentrada"
-                    th:field="*{dataEntrada}"
-                    class="form-control">
-                </div>
+            <div class="form-group">
+                <label for="txtdataentrada">Data entrada</label>
+                <input type="date" id="txtdataentrada" th:field="*{dataEntrada}" class="form-control">
+            </div>
 
-                <div class="formgroup">
-                    <label for="txtvalor">Valor</label>
-                    <input type="text" id="txtvalor" th:field="*{valor}" class="form-control">
-                </div>
+            <div class="form-group">
+                <label for="txtvalor">Valor</label>
+                <input type="text" id="txtvalor" th:field="*{valor}" class="form-control">
+            </div>
 
-                <div class="form-group">
-                    <button class="btn btn-primary" type="submit">Enviar</button>
-                </div>
-            </form>
-        </main>
-        <div th:include="layout :: footer">(footer)</div>
-    </body>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">Enviar</button>
+            </div>
+        </form>
+    </main>
+    <div th:include="layout :: footer">(footer)</div>
+</body>
 </html>

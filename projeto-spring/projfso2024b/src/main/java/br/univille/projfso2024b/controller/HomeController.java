@@ -13,7 +13,7 @@ public class HomeController {
     @GetMapping
     // @ResponseBody
     public ModelAndView index() {
-        var msg = "eu não acredito";
-        return new ModelAndView("home/index", "apelido", msg);
+        //var msg = "eu não acredito";
+        return new ModelAndView("home/index");
     }
 }

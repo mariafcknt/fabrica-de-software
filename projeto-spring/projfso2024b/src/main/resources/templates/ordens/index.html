@@ -10,27 +10,28 @@
 
             <a href="/ordens/novo" class="btn btn-primary">Novo</a>
 
-            <table class="table" id="tabpets">
+            <table class="table" id="tabordens">
                 <thead>
                     <th>Ordem</th>
+                    <th>Pet</th>
                     <th>Data de Entrada</th>
                     <th>Data de Saída</th>
                     <th>Serviço</th>
                     <th>Valor</th>
                     <th>Forma de Pagamento</th>
-                    <th>Pet</th>
-                  
+                    <th>Anotação</th>
                 </thead>
                 <tbody>
                     <!--th:each é uma for, cada cliente q vem do banco ele repete tudo abaixo -->
                     <tr th:each="umaOrdem : ${listaOrdens}">
                     <td th:text="${umaOrdem.id}"></td>
+                    <td th:text="${umaOrdem.pet?.nome}"></td> 
                     <td th:text="${umaOrdem.dataEntrada}"></td>
                     <td th:text="${umaOrdem.dataSaida}"></td> 
                     <td th:text="${umaOrdem.servico}"></td>
                     <td th:text="${umaOrdem.valor}"></td>
                     <td th:text="${umaOrdem.formaPagamento}"></td>
-                    <td th:text="${umaOrdem.pet?.nome}"></td> 
+                    <td th:text="${umaOrdem.anotacao}"></td>
                     <td><a th:href="@{'/ordens/alterar/' + ${umaOrdem.id}}" class="btn btn-warning">Editar</a>
                     
                     <button class="btn btn-danger js-delete" th:data-id="${umaOrdem.id}">Excluir</button>
@@ -41,15 +42,15 @@
                 </tbody>
             </table>
 
-            <div class="modal" tabindex="-1" id="modalpet">
+            <div class="modal" tabindex="-1" id="modalordem">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title">Excluir Pet</h5>
+                    <h5 class="modal-title">Excluir Ordem de Serviço</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <p>Confirma a exclusão da Ordem?</p>
+                    <p>Confirma a exclusão da Ordem de Serviço?</p>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>

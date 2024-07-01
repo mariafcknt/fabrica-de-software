@@ -2,8 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
     <head th:include="layout :: htmlhead"></head>
     <body>
+        <nav th:replace="layout :: menu">(menu)</nav>
         <main class="container">
-            <nav th:replace="layout :: menu">(menu)</nav>
+
             <h1>Cliente</h1>
 
             <form th:action="@{/clientes}"

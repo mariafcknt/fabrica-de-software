@@ -2,11 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
     <head th:include="layout :: htmlhead"></head>
     <body>
-        
-        <nav th:replace="layout :: menu">(menu)</nav>
-
-        <h1>Sistema para PetShop</h1>
-        <p><b>Dupla:</b> Maria Fernanda, Yduan Rech</p>
-        <div th:include="layout :: footer">(footer)</div>
+        <main class="container">
+            <nav th:replace="layout :: menu">(menu)</nav>
+            <h1>Sistema para PetShop</h1>
+            <p><b>Desenvolvido por:</b> Maria Fernanda, Yduan Rech</p>
+            <div th:include="layout :: footer">(footer)</div>
+        </main>
     </body>
 </html>
